@@ -1,1 +1,16 @@
-<p>weather works!</p>
+<div *ngIf="weatherData" class="weather-container">
+  <p>Current Temperature: {{ weatherData.current.temp_c }}°C</p>
+  <p>Current Condition: {{ weatherData.current.condition.text }}</p>
+
+  <div *ngIf="weatherData.forecast">
+    <h3>Forecast:</h3>
+    <div class="forecast-container">
+      <div *ngFor="let day of weatherData.forecast.forecastday" class="forecast-box">
+        <p>Date: {{ day.date }}</p>
+        <p>Max Temperature: {{ day.day.maxtemp_c }}°C</p>
+        <p>Min Temperature: {{ day.day.mintemp_c }}°C</p>
+        <p>Condition: {{ day.day.condition.text }}</p>
+      </div>
+    </div>
+  </div>
+</div>
